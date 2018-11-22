@@ -44,11 +44,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jogos"/>
+
             <TextView
-                android:layout_below="@+id/profile_jogos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100"/>
+                android:layout_below="@+id/profile_jogos"
+                android:text="100" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -170,10 +171,11 @@
                     android:layout_height="wrap_content"
                     android:text="Nacionalidade"
                     android:textSize="13sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="portuguesa"
+                    android:text="Portuguesa"
                     android:textSize="18sp" />
                 <view
                     android:layout_width="match_parent"
