@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:id="@+id/mais"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/itemPerfil"
+            android:title="Perfil"/>
+        <item
+            android:id="@+id/itemPaginaInicial"
+            android:title="Pagina Inicial" />
+    </group>
+
+    <item android:title="Mais">
+        <menu>
+            <item
+                android:id="@+id/switchMode"
+                android:title="Modo Noturno"
+                app:actionLayout="@layout/switch_item" />
+
+                <item
+                    android:id="@+id/itemOpcoes"
+                    android:title="Opções" />
+
+                <item
+                    android:id="@+id/itemSobre"
+                    android:title="Sobre" />
+
+                <item
+                    android:id="@+id/itemSair"
+                    android:title="Sair" />
+        </menu>
+    </item>
+
+
+</menu>
