@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".ProfileActivity"></activity>
+
         <activity
             android:name=".MainActivity"
             android:label="Meus Jogos"
