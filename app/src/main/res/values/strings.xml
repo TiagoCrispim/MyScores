@@ -36,6 +36,9 @@
     <string name="prompt_dataDeNascimento">Data de Nascimento</string>
     <string name="text_instrucao_registo">Preencha os seguintes campos para efetuar o seu registo:</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!-- Strings related to main activity -->
 
 </resources>

@@ -7,7 +7,7 @@
     <group android:id="@+id/mais"
         android:checkableBehavior="single">
         <item
-            android:id="@+id/itemPerfil"
+            android:id="@+id/itemPaginaPerfil"
             android:title="Perfil"/>
         <item
             android:id="@+id/itemPaginaInicial"
