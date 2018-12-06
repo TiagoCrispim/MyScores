@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".slide_layout"></activity>
 
         <activity
             android:name=".MainActivity"
