@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvEquipaB" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewEquipaB"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

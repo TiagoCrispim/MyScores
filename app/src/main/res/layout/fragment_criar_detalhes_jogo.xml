@@ -41,8 +41,7 @@
                 android:id="@+id/tilData"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:hint="Data:"
-                android:text="Data: " />
+                android:hint="Data:" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -60,8 +59,7 @@
                 android:id="@+id/tilHora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Hora:"
-                android:text="Hora:" />
+                android:hint="Hora:"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
@@ -79,8 +77,7 @@
                 android:id="@+id/tilLocal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Local:"
-                android:text="Local:" />
+                android:hint="Local:" />
         </android.support.design.widget.TextInputLayout>
 
 

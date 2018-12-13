@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".slide_layout"></activity>
+        <activity android:name=".slide_layout"
+            android:theme="@style/AppTheme"></activity>
 
         <activity
             android:name=".MainActivity"
