@@ -1,11 +1,15 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+
+import pt.ipleiria.estg.dei.amsi.myscores.R;
 
 public class Register extends AppCompatActivity {
+    private Button buttonRegistar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,6 +17,8 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        
     }
 
     public void onClickRegistar(View view) {
