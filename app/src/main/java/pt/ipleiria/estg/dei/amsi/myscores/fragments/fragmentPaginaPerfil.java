@@ -1,7 +1,6 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,13 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+
+import pt.ipleiria.estg.dei.amsi.myscores.NavegationDrawerConstants;
+import pt.ipleiria.estg.dei.amsi.myscores.R;
+import pt.ipleiria.estg.dei.amsi.myscores.User;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class fragmentPaginaPerfil extends Fragment {
+    private EditText tvNome, tvEmailUtilizador, tvTUserName, tvTDataNascimento, tvTNacionalidade, tvNJogosJogados, tvNGolosMarcados;
 
+    private User user;
 
     public fragmentPaginaPerfil() {
         // Required empty public constructor
@@ -38,6 +44,23 @@ public class fragmentPaginaPerfil extends Fragment {
         });
 
 
+        this.tvNome = view.findViewById(R.id.tvNome);
+        this.tvEmailUtilizador = view.findViewById(R.id.tvEmailUtilizador);
+        this.tvTUserName = view.findViewById(R.id.tvTUserName);
+        this.tvTDataNascimento = view.findViewById(R.id.tvTDataNascimento);
+        this.tvTNacionalidade = view.findViewById(R.id.tvNacionalidade);
+        this.tvNJogosJogados = view.findViewById(R.id.tvNJogosJogados);
+        this.tvNGolosMarcados = view.findViewById(R.id.tvNGolosMarcados);
+
+        if(this.user !=  null){
+            this.tvNome.setText(this.user.getNome());
+            this.tvEmailUtilizador.setText(this.user.getEmail());
+            this.tvTUserName.setText(this.user.getUsername());
+            this.tvTDataNascimento.setText(this.user.getDataNascimento());
+            this.tvTNacionalidade.setText(this.user.getNacionalidade());
+            this.tvNJogosJogados.setText(this.user.getJogosJogados());
+            this.tvNGolosMarcados.setText(this.user.getGolosMarcados());
+        }
 
         return view;
     }

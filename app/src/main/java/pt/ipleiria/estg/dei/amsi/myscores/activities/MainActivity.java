@@ -1,10 +1,7 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.activities;
 
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -15,7 +12,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
+import pt.ipleiria.estg.dei.amsi.myscores.R;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonJogos;
+import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentPaginaInicial;
+import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentPaginaPerfil;
 
 
 public class MainActivity extends AppCompatActivity
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        SingletonJogos.iniciarBD(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

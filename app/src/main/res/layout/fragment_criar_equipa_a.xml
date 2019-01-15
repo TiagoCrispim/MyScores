@@ -5,7 +5,7 @@
     android:id="@+id/equipaALayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragmentCiriarEquipaA">
+    tools:context=".fragments.fragmentCiriarEquipaA">
 
     <!-- TODO: Update blank fragment layout -->
 

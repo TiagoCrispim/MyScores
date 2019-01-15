@@ -1,11 +1,10 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.fragments;
 
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +13,12 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import pt.ipleiria.estg.dei.amsi.myscores.Jogo;
+import pt.ipleiria.estg.dei.amsi.myscores.NavegationDrawerConstants;
+import pt.ipleiria.estg.dei.amsi.myscores.R;
+import pt.ipleiria.estg.dei.amsi.myscores.adapters.RecycleViewAdapter;
+import pt.ipleiria.estg.dei.amsi.myscores.activities.slide_layout;
 
 
 /**
@@ -37,7 +42,7 @@ public class fragmentPaginaInicial extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
 
-        initializeData();
+        //initializeData();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -54,6 +59,12 @@ public class fragmentPaginaInicial extends Fragment {
                 startActivity(abrirCriarJogo);
             }
         });
+
+        /*if (savedInstanceState == null){
+            SingletonJogos.getInstance().lerJogos(this);
+            this.jogos = SingletonJogos.getInstance().getJogos();
+        }*/
+
         return view;
 
     }
@@ -65,15 +76,9 @@ public class fragmentPaginaInicial extends Fragment {
 
     }
 
-    public void mostrarFragmento(Fragment fragment){
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameContent, fragment);
-        fragmentTransaction.commit();
-    }
-
     private List<Jogo> jogos = new ArrayList<>();
 
-    private void initializeData(){
+    /*private void initializeData(){
         jogos.add(new Jogo("Vitória", "2-1", "6/12/2018"));
         jogos.add(new Jogo("Derrota", "1-2", "6/12/2018"));
         jogos.add(new Jogo("Empate", "5-5", "6/12/2018"));
@@ -83,6 +88,6 @@ public class fragmentPaginaInicial extends Fragment {
         jogos.add(new Jogo("Vitória", "2-1", "6/12/2018"));
         jogos.add(new Jogo("Derrota", "1-2", "6/12/2018"));
         jogos.add(new Jogo("Empate", "5-5", "6/12/2018"));
-    }
+    }*/
 
 }

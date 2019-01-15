@@ -1,17 +1,23 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.activities;
 
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class slide_layout extends FragmentActivity {
+import pt.ipleiria.estg.dei.amsi.myscores.R;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonJogos;
+import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCiriarEquipaA;
+import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCriarDetalhesJogo;
+import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCriarEquipaB;
+
+public class slide_layout extends AppCompatActivity {
 
     //The number of pages (wizard steps) to show in this demo.
     private static final int NUM_PAGES = 3;
@@ -31,6 +37,12 @@ public class slide_layout extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slide_layout);
+
+        //LocalBaseDados localBaseDados = new LocalBaseDados(this);
+
+        SingletonJogos.iniciarBD(this);
+
+        //adicionar uso de base de dados
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);

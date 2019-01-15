@@ -1,4 +1,4 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -32,6 +32,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import pt.ipleiria.estg.dei.amsi.myscores.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
 

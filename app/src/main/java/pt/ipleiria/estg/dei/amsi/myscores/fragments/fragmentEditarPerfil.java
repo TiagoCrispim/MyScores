@@ -1,4 +1,4 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.fragments;
 
 
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import pt.ipleiria.estg.dei.amsi.myscores.NavegationDrawerConstants;
+import pt.ipleiria.estg.dei.amsi.myscores.R;
 
 
 /**
