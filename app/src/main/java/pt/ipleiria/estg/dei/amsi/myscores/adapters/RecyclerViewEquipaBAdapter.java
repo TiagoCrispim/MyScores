@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Jogador;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogador;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
 
 public class RecyclerViewEquipaBAdapter extends RecyclerView.Adapter<RecyclerViewEquipaBAdapter.JogadorEBViewHolder>{

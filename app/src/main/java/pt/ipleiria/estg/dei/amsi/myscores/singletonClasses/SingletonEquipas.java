@@ -21,9 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Equipa;
-import pt.ipleiria.estg.dei.amsi.myscores.User;
-import pt.ipleiria.estg.dei.amsi.myscores.baseDados.LocalBaseDados;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Equipa;
 
 public class SingletonEquipas {
     private static SingletonEquipas instance = null;

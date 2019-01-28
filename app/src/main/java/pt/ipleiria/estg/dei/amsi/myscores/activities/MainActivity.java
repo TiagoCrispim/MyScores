@@ -12,11 +12,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 import pt.ipleiria.estg.dei.amsi.myscores.R;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.User;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonBD;
 import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonJogos;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentPaginaInicial;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentPaginaPerfil;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonUsers;
 
 
 public class MainActivity extends AppCompatActivity
@@ -24,15 +32,23 @@ public class MainActivity extends AppCompatActivity
 
     FragmentTransaction fragmentoReplace;
 
+    private TextView tvNome, tvEmail;
+
+    private ArrayList<User> user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SingletonJogos.iniciarBD(this);
+        SingletonBD.iniciarBD(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        user = SingletonUsers.getInstance(this).getUser();
+
         fragmentoReplace = getSupportFragmentManager().beginTransaction();
+
+        LinearLayout navHearder = findViewById(R.id.navigation_header_container);
 
         //FrameLayout frameContent = findViewById(R.id.frameContent);
         //FragmentManager fm = getSupportFragmentManager().findFragmentById()
@@ -52,6 +68,12 @@ public class MainActivity extends AppCompatActivity
         navigationView.setCheckedItem(R.id.itemPaginaInicial);
         Fragment fragment = new fragmentPaginaInicial();
         mostrarFragmento(fragment);
+
+        View headerView = navigationView.getHeaderView(0);
+        tvNome = headerView.findViewById(R.id.textViewUsername);
+        tvNome.setText(user.get(0).getNome());
+        tvEmail = headerView.findViewById(R.id.textViewEmail);
+        tvEmail.setText(user.get(0).getEmail());
 
     }
 
@@ -97,13 +119,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.itemPaginaPerfil) {
             fragment = new fragmentPaginaPerfil();
             mostrarFragmento(fragment);
-            /*fragmentoReplace.replace(R.id.frameContent, new fragmentPaginaPerfil());
-            fragmentoReplace.commit();*/
         } else if (id == R.id.itemPaginaInicial) {
             fragment = new fragmentPaginaInicial();
             mostrarFragmento(fragment);
-            /*fragmentoReplace.replace(R.id.frameContent, new fragmentPaginaInicial());
-            fragmentoReplace.commit();*/
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
