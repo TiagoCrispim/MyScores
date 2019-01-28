@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Equipa;
-import pt.ipleiria.estg.dei.amsi.myscores.Golosjogo;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Golosjogo;
 
 public class SingletonGolosjogo {
     private static SingletonGolosjogo instance = null;

@@ -9,16 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 import java.util.List;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Jogo;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogo;
 import pt.ipleiria.estg.dei.amsi.myscores.activities.MainActivity;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.FragmentEstatisticasJogo;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonJogos;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.JogoViewHolder> {
 
-    List<Jogo> jogos;
+    private ArrayList<Jogo> jogo;
 
     public class JogoViewHolder extends RecyclerView.ViewHolder {
         public CardView cardView;
@@ -46,13 +49,13 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
         }
     }
 
-    public RecycleViewAdapter(List<Jogo> jogos){
-        this.jogos = jogos;
+    public RecycleViewAdapter(ArrayList<Jogo> jogo){
+        this.jogo = jogo;
     }
 
     @Override
     public int getItemCount() {
-        return jogos.size();
+        return jogo.size();
     }
 
     @NonNull
@@ -65,9 +68,9 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull JogoViewHolder jogoViewHolder, int position) {
-        /*jogoViewHolder.resultado.setText(jogos.get(position).getResultado());
-        jogoViewHolder.resultadoJogo.setText(jogos.get(position).getResultadoJogo());
-        jogoViewHolder.data.setText(jogos.get(position).getData());*/
+        jogoViewHolder.resultado.setText(jogo.get(position).getLocal());
+        jogoViewHolder.resultadoJogo.setText(jogo.get(position).getHora());
+        jogoViewHolder.data.setText(jogo.get(position).getData());
     }
 
     @Override

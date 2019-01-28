@@ -1,210 +1,191 @@
 package pt.ipleiria.estg.dei.amsi.myscores.singletonClasses;
 
+import android.app.Application;
 import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Jogo;
-import pt.ipleiria.estg.dei.amsi.myscores.User;
 import pt.ipleiria.estg.dei.amsi.myscores.baseDados.LocalBaseDados;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.User;
 
-public class SingletonUsers {
-    private static SingletonUsers instance = null;
-    /*private static LocalBaseDados localBaseDados = null;*/
-
+public class SingletonUsers extends Application {
     private static RequestQueue volleyQueue = null;
+    private static SingletonUsers INSTANCE = null;
+    private LocalBaseDados localBD = null;
+
+
+    private String urlAPIUsers = "http://5e85d100.ngrok.io/MyScoresWebsite/api/web/v1/users";
+    private String urlAPIUsersLogin = "http://5e85d100.ngrok.io/MyScoresWebsite/api/web/v1/users/login";
+    private String urlAPIUsersRegisto = "http://5e85d100.ngrok.io/MyScoresWebsite/api/web/v1/users/registo";
 
     private ArrayList<User> users;
-    private String urlAPI = "http://localhost/MyScoresWebsite/api/web/v1/users";
+    private String dadosLogin;
+    private String dadosRegisto;
 
-    public static synchronized SingletonUsers getInstance(Context context){
-        if (instance == null){
-            instance = new SingletonUsers(context);
+    public static synchronized SingletonUsers getInstance(Context context) {
+        if(INSTANCE == null){
+            INSTANCE = new SingletonUsers(context);
+            volleyQueue = Volley.newRequestQueue(context);
         }
-        return instance;
+        return INSTANCE;
     }
 
-    private SingletonUsers(Context context){
-        this.users = new ArrayList<>();
-        volleyQueue = Volley.newRequestQueue(context);
+    private SingletonUsers(Context context) {
+        users = new ArrayList<>();
+        localBD = new LocalBaseDados(context);
     }
 
-    /*public static void iniciarBD(Context context){
-        if (localBaseDados == null){
-            localBaseDados = new LocalBaseDados(context);
-        }
-    }*/
+    public void loginAPI(final String username, final String password, final Context context){
+        StringRequest req = new StringRequest
+                (Request.Method.POST, urlAPIUsersLogin, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("--> LOGIN:: RESPOSTA LOGIN POST : " + response);
+                        try {
+                            users.clear();
+                            JSONObject userObj = new JSONObject(response);
+                            Log.d("TesteJsonLogin", userObj.toString());
 
-    // Métodos para a API
-    public void getUsersAPI(Context context){
-        if(hasInternet(context)){
-            JsonObjectRequest req = new JsonObjectRequest(
-                    Request.Method.GET, urlAPI, null,
-                    new Response.Listener<JSONObject>(){
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                JSONArray listaUsers = response.getJSONArray("users");
-                                getUsers().clear();
-                                for (int i = 0; i < listaUsers.length(); i++) {
-                                    JSONObject user = listaUsers.getJSONObject(i);
+                            User user = new User(
+                                    userObj.getInt("id"),
+                                    userObj.getString("username"),
+                                    userObj.getString("nome"),
+                                    userObj.getString("password_hash"),
+                                    userObj.getString("email"),
+                                    userObj.getString("dataNascimento"),
+                                    userObj.getString("nacionalidade"),
+                                    userObj.getString("auth_key"));
 
-                                    getUsers().add(new User(user.getInt("id"),
-                                            user.getString("username"),
-                                            user.getString("nome"),
-                                            user.getString("password_hash"),
-                                            user.getString("email"),
-                                            user.getString("dataNascimento"),
-                                            user.getString("nacionalidade"),
-                                            user.getString("golosMaracados"),
-                                            user.getString("jogosJogados")));
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                Log.e("Volley", "Error while calling REST API");
-                            }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.e("Volley", error.toString());
-                        }
-                    });
-            volleyQueue.add(req);
-        }
-    }
+                            users.add(user);
+                                    Log.d("testeUser", String.valueOf(users.size()));
+                                    if (!SingletonUsers.getInstance(context).localBD.CheckUser((int)user.getId())) {
+                                        SingletonUsers.getInstance(context).localBD.InsertUser(user);
+                                    }
 
-    public void addPessoaAPI(final User user, final Context context){
-        if(hasInternet(context)) {
-            StringRequest req = new StringRequest(
-                    Request.Method.PUT, urlAPI,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Log.i("Volley", response);
+                                   dadosLogin = response;
+
+
+                            Log.d("TesteUser", users.toString());
+
+                        } catch (Throwable e) {
+                            e.printStackTrace();
                         }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("Volley", "ERRO ADD: " + error.getMessage());
-                }
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        dadosLogin = null;
+                        VolleyLog.d("LOGIN:: Errorrr: " + error.getMessage());
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", username);
+                params.put("password", password);
+
+                return params;
             }
-            ) {
-                @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("id", String.valueOf(user.getId()));
-                    params.put("username", user.getUsername());
-                    params.put("nome", user.getNome());
-                    params.put("passqord_hash", user.getPasswordHash());
-                    params.put("email", user.getEmail());
-                    params.put("dataNascimento", user.getDataNascimento());
-                    params.put("nacionalidade", user.getNacionalidade());
-                    params.put("golosMarcados", user.getGolosMarcados());
-                    params.put("jogosJogados", user.getJogosJogados());
 
-                    return params;
-                }
-            };
-            volleyQueue.add(req);
-        }
-        getUsersAPI(context);
+        };
+        volleyQueue.add(req);
     }
 
-    public void removeUserAPI(final User user, Context context){
-        if(hasInternet(context)) {
-            StringRequest req = new StringRequest(
-                    Request.Method.DELETE, urlAPI + "/" + user.getId(),
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Log.i("Volley", response);
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("Volley", "ERRO REMOVE: " + error.getMessage());
-                }
-            });
-            volleyQueue.add(req);
-        }
-        getUsersAPI(context);
-    }
-
-    public void updateUserAPI(final int id, final User user, final Context context){
-        if(hasInternet(context)) {
-            StringRequest req = new StringRequest(
-                    Request.Method.POST, urlAPI + "/" + id,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Log.i("Volley", response);
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("Volley", "ERRO UPDATE: " + error.getMessage());
-                }
-            }
-            ) {
-                @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("id", String.valueOf(user.getId()));
-                    params.put("username", user.getUsername());
-                    params.put("nome", user.getNome());
-                    params.put("passqord_hash", user.getPasswordHash());
-                    params.put("email", user.getEmail());
-                    params.put("dataNascimento", user.getDataNascimento());
-                    params.put("nacionalidade", user.getNacionalidade());
-                    params.put("golosMarcados", user.getGolosMarcados());
-                    params.put("jogosJogados", user.getJogosJogados());
-
-                    return params;
-                }
-            };
-            volleyQueue.add(req);
-        }
-        getUsersAPI(context);
-    }
-
-
-    // setters e getters
-    public ArrayList<User> getUsers() {
+    public ArrayList<User> getUser(){
+        /*users.clear();*/
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
-        this.users = users;
+    public String returnDadosLogin(){
+        return dadosLogin;
     }
 
-
-    // teste de ligação à internet
-    private static boolean hasInternet(Context context){
-        ConnectivityManager cm =
-                (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-        return isConnected;
+    public String returnDadosRegisto(){
+        return dadosRegisto;
     }
+
+    public void registoAPI(final String username, final String nome, final String dataNascimento, final String email, final String nacionalidade, final String password, final Context context){
+        StringRequest req = new StringRequest
+                (Request.Method.POST, urlAPIUsersRegisto, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("--> REGISTO:: RESPOSTA RREGISTO POST : " + response);
+                        Log.d("TesteRegisto", response);
+
+                        dadosRegisto = response;
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        dadosLogin = null;
+                        VolleyLog.d("REGISTO:: Errorrr: " + error.getMessage());
+                        Log.d("TesteRegisto", error.toString());
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", username);
+                params.put("nome", nome);
+                params.put("dataNascimento", dataNascimento);
+                params.put("email", email);
+                params.put("nacionalidade", nacionalidade);
+                params.put("password", password);
+
+                return params;
+            }
+
+        };
+        volleyQueue.add(req);
+    }
+
+    /*public void editarUserAPI(final long idUser, final User user, final String username, final String nome, final String dataNascimento, final String email, final String nacionalidade, final String password, final Context context){
+        StringRequest req = new StringRequest
+                (Request.Method.PUT, urlAPIUsers +'/'+idUser, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println("--> RESPOSTA PUT : " + response);
+
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        System.out.println("--> ERROR: RESPOSTA PUT : "+error.getMessage());
+                    }
+                }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("username", username);
+                params.put("nome", nome);
+                params.put("dataNascimento", dataNascimento);
+                params.put("email", email);
+                params.put("nacionalidade", nacionalidade);
+                params.put("password", password);
+
+
+                return params;
+            }
+        };
+        volleyQueue.add(req);
+    }*/
+
 }

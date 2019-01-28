@@ -14,18 +14,18 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Jogo;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogo;
 import pt.ipleiria.estg.dei.amsi.myscores.NavegationDrawerConstants;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
 import pt.ipleiria.estg.dei.amsi.myscores.adapters.RecycleViewAdapter;
 import pt.ipleiria.estg.dei.amsi.myscores.activities.slide_layout;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonJogos;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class fragmentPaginaInicial extends Fragment {
-    List<Jogo> jogosList = new ArrayList<>();
 
 
     public fragmentPaginaInicial() {
@@ -39,15 +39,15 @@ public class fragmentPaginaInicial extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pagina_inicial, container, false);
 
+        ArrayList<Jogo> jogo = SingletonJogos.getInstance(getContext()).getJogo();
+
         RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
-
-        //initializeData();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 
-        RecycleViewAdapter adapter = new RecycleViewAdapter(jogos);
+        RecycleViewAdapter adapter = new RecycleViewAdapter(jogo);
         recyclerView.setAdapter(adapter);
 
 
@@ -75,19 +75,5 @@ public class fragmentPaginaInicial extends Fragment {
         getActivity().setTitle(NavegationDrawerConstants.TAG_PINICIAL);
 
     }
-
-    private List<Jogo> jogos = new ArrayList<>();
-
-    /*private void initializeData(){
-        jogos.add(new Jogo("Vitória", "2-1", "6/12/2018"));
-        jogos.add(new Jogo("Derrota", "1-2", "6/12/2018"));
-        jogos.add(new Jogo("Empate", "5-5", "6/12/2018"));
-        jogos.add(new Jogo("Vitória", "2-1", "6/12/2018"));
-        jogos.add(new Jogo("Derrota", "1-2", "6/12/2018"));
-        jogos.add(new Jogo("Empate", "5-5", "6/12/2018"));
-        jogos.add(new Jogo("Vitória", "2-1", "6/12/2018"));
-        jogos.add(new Jogo("Derrota", "1-2", "6/12/2018"));
-        jogos.add(new Jogo("Empate", "5-5", "6/12/2018"));
-    }*/
 
 }

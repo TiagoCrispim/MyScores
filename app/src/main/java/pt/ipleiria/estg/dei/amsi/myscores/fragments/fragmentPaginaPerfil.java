@@ -1,6 +1,7 @@
 package pt.ipleiria.estg.dei.amsi.myscores.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -10,19 +11,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import pt.ipleiria.estg.dei.amsi.myscores.NavegationDrawerConstants;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
-import pt.ipleiria.estg.dei.amsi.myscores.User;
+import pt.ipleiria.estg.dei.amsi.myscores.activities.MainActivity;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.User;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonUsers;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class fragmentPaginaPerfil extends Fragment {
-    private EditText tvNome, tvEmailUtilizador, tvTUserName, tvTDataNascimento, tvTNacionalidade, tvNJogosJogados, tvNGolosMarcados;
+    private TextView tvNome, tvEmailUtilizador, tvTUserName, tvTDataNascimento, tvTNacionalidade;
 
-    private User user;
+    private ArrayList<User> user;
 
     public fragmentPaginaPerfil() {
         // Required empty public constructor
@@ -35,6 +42,8 @@ public class fragmentPaginaPerfil extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_pagina_perfil, container, false);
 
+        user = SingletonUsers.getInstance(getContext()).getUser();
+
         Button btnEditarPerfil =  view.findViewById(R.id.btEditarPerfil);
         btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,23 +52,18 @@ public class fragmentPaginaPerfil extends Fragment {
             }
         });
 
+        tvNome = view.findViewById(R.id.tvNome);
+        tvEmailUtilizador = view.findViewById(R.id.tvEmailUtilizador);
+        tvTUserName = view.findViewById(R.id.tvTUserName);
+        tvTDataNascimento = view.findViewById(R.id.tvTDataNascimento);
+        tvTNacionalidade = view.findViewById(R.id.tvTNacionalidade);
 
-        this.tvNome = view.findViewById(R.id.tvNome);
-        this.tvEmailUtilizador = view.findViewById(R.id.tvEmailUtilizador);
-        this.tvTUserName = view.findViewById(R.id.tvTUserName);
-        this.tvTDataNascimento = view.findViewById(R.id.tvTDataNascimento);
-        this.tvTNacionalidade = view.findViewById(R.id.tvNacionalidade);
-        this.tvNJogosJogados = view.findViewById(R.id.tvNJogosJogados);
-        this.tvNGolosMarcados = view.findViewById(R.id.tvNGolosMarcados);
-
-        if(this.user !=  null){
-            this.tvNome.setText(this.user.getNome());
-            this.tvEmailUtilizador.setText(this.user.getEmail());
-            this.tvTUserName.setText(this.user.getUsername());
-            this.tvTDataNascimento.setText(this.user.getDataNascimento());
-            this.tvTNacionalidade.setText(this.user.getNacionalidade());
-            this.tvNJogosJogados.setText(this.user.getJogosJogados());
-            this.tvNGolosMarcados.setText(this.user.getGolosMarcados());
+        if ( user != null){
+            tvNome.setText(user.get(0).getNome());
+            tvEmailUtilizador.setText(user.get(0).getEmail());
+            tvTUserName.setText(user.get(0).getUsername());
+            tvTDataNascimento.setText(user.get(0).getDataNascimento());
+            tvTNacionalidade.setText(user.get(0).getNacionalidade());
         }
 
         return view;

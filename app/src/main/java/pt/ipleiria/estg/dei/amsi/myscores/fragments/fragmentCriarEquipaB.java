@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Jogador;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogador;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
 import pt.ipleiria.estg.dei.amsi.myscores.adapters.RecyclerViewEquipaBAdapter;
 
@@ -50,9 +50,11 @@ public class fragmentCriarEquipaB extends Fragment {
     private List<Jogador> jogadores = new ArrayList<>();
 
     private void initializeData(){
-        jogadores.add(new Jogador("Bot", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("BoT", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("Bote", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Carlos Franco", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Afonso Maximino", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Afonso Pinheiro", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Gonçalo Amaro", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Francisco Melicias", R.drawable.ic_launcher));
     }
 
 }

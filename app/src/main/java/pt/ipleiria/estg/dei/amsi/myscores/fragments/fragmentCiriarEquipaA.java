@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Jogador;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogador;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
 import pt.ipleiria.estg.dei.amsi.myscores.adapters.RecyclerViewEquipaAAdapter;
 
@@ -48,9 +48,11 @@ public class fragmentCiriarEquipaA extends Fragment {
     private List<Jogador> jogadores = new ArrayList<>();
 
     private void initializeData(){
-        jogadores.add(new Jogador("Rodrigo Gameiro Bot", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("Tiago Crispim Bot", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("Daniel Sarreira Pro", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Rodrigo Gameiro", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Tiago Crispim", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Daniel Sarreira", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Nuno Nunes", R.drawable.ic_launcher));
+        jogadores.add(new Jogador("Rui Silva", R.drawable.ic_launcher));
     }
 
 

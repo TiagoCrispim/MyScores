@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import pt.ipleiria.estg.dei.amsi.myscores.Jogador;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogador;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentPaginaPerfil;
 import pt.ipleiria.estg.dei.amsi.myscores.activities.slide_layout;
@@ -34,7 +34,7 @@ public class RecyclerViewEquipaAAdapter extends RecyclerView.Adapter<RecyclerVie
             this.apagarJogador = itemView.findViewById(R.id.btnDeleteJogador);
 
             //fazer quando terminar outras coisas importantes, abrir janela with perfil de outros jogador
-            fotoJogador.setOnClickListener(new View.OnClickListener(){
+            /*fotoJogador.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
                     slide_layout slideLayout = (slide_layout) view.getContext();
@@ -56,7 +56,7 @@ public class RecyclerViewEquipaAAdapter extends RecyclerView.Adapter<RecyclerVie
                     transaction.addToBackStack(null);
                     transaction.commit();
                 }
-            });
+            });*/
 
         }
     }

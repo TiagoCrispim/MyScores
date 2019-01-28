@@ -1,4 +1,4 @@
-package pt.ipleiria.estg.dei.amsi.myscores;
+package pt.ipleiria.estg.dei.amsi.myscores.classes;
 
 public class Golosjogo {
     private String id;

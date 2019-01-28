@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import pt.ipleiria.estg.dei.amsi.myscores.R;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonBD;
 import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonJogos;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCiriarEquipaA;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCriarDetalhesJogo;
@@ -40,7 +41,7 @@ public class slide_layout extends AppCompatActivity {
 
         //LocalBaseDados localBaseDados = new LocalBaseDados(this);
 
-        SingletonJogos.iniciarBD(this);
+        SingletonBD.iniciarBD(this);
 
         //adicionar uso de base de dados
 
@@ -112,13 +113,13 @@ public class slide_layout extends AppCompatActivity {
             switch (position) {
 
                 case 0:
-                    return new fragmentCriarDetalhesJogo();
-
-                case 1:
                     return new fragmentCiriarEquipaA();
 
-                case 2:
+                case 1:
                     return new fragmentCriarEquipaB();
+
+                case 2:
+                    return new fragmentCriarDetalhesJogo();
 
                 default:
                     return null;
