@@ -1,6 +1,7 @@
 package pt.ipleiria.estg.dei.amsi.myscores.classes;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -105,7 +106,5 @@ public class User implements Serializable {
     public String toString() {
         return username + nome + email + dataNascimento + nacionalidade;
     }
-
-
 
 }

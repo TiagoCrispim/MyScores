@@ -11,12 +11,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+
 import pt.ipleiria.estg.dei.amsi.myscores.R;
+import pt.ipleiria.estg.dei.amsi.myscores.classes.User;
 import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonBD;
 import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonJogos;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCiriarEquipaA;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCriarDetalhesJogo;
 import pt.ipleiria.estg.dei.amsi.myscores.fragments.fragmentCriarEquipaB;
+import pt.ipleiria.estg.dei.amsi.myscores.singletonClasses.SingletonUsers;
 
 public class slide_layout extends AppCompatActivity {
 
@@ -39,11 +43,7 @@ public class slide_layout extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_slide_layout);
 
-        //LocalBaseDados localBaseDados = new LocalBaseDados(this);
-
         SingletonBD.iniciarBD(this);
-
-        //adicionar uso de base de dados
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -128,7 +128,6 @@ public class slide_layout extends AppCompatActivity {
 
         @Override
         public int getCount() {
-
             return NUM_PAGES;
         }
     }

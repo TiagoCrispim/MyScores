@@ -26,7 +26,7 @@ public class SingletonJogos extends Application {
     private static SingletonJogos INSTANCE = null;
     private LocalBaseDados localBD = null;
 
-    private String urlAPIJogos = "http://5e85d100.ngrok.io/MyScoresWebsite/api/web/v1/jogos";
+    private String urlAPIJogos = "http://192e1836.ngrok.io/MyScoresWebsite/api/web/v1/jogos";
 
     private ArrayList<Jogo> jogos;
 
@@ -54,13 +54,13 @@ public class SingletonJogos extends Application {
     }
 
     public void getAllJogosAPI(final Context context){
-            Toast.makeText(context, "--> AQUI!", Toast.LENGTH_SHORT).show();
             JsonArrayRequest req = new JsonArrayRequest
                     (Request.Method.GET, urlAPIJogos, null, new Response.Listener<JSONArray>() {
                         @Override
                         public void onResponse(JSONArray response) {
                             try {
                                 for (int i = 0; i < response.length(); i++) {
+                                    /*jogos.clear();*/
                                     JSONObject jogoObj = response.getJSONObject(i);
                                     Log.d("TesteJsonLogin", jogoObj.toString());
 

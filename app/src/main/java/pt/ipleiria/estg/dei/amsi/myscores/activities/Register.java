@@ -74,7 +74,7 @@ public class Register extends AppCompatActivity {
             public void run() {
                 checkRegister();
             }
-        },10000);
+        },5000);
 
     }
 
