@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogo;
 import pt.ipleiria.estg.dei.amsi.myscores.classes.User;
@@ -42,23 +43,28 @@ public class LocalBaseDados extends SQLiteOpenHelper {
     private static final String DATA_JOGO = "data";
     private static final String HORA_JOGO = "hora";
     private static final String LOCAL_JOGO = "local";
-    private static final String EQUIPA_ID1 = "equipaA_id";
-    private static final String EQUIPA_ID2 = "equipaB_id";
+    private static final String ID_JOGADOR1A = "id_jogador1A";
+    private static final String ID_JOGADOR2A = "id_jogador2A";
+    private static final String ID_JOGADOR3A = "id_jogador3A";
+    private static final String ID_JOGADOR4A = "id_jogador4A";
+    private static final String ID_JOGADOR5A = "id_jogador5A";
+    private static final String ID_JOGADOR6A = "id_jogador6A";
+    private static final String ID_JOGADOR7A = "id_jogador7A";
+    private static final String ID_JOGADOR8A = "id_jogador8A";
+    private static final String ID_JOGADOR9A = "id_jogador9A";
+    private static final String ID_JOGADOR10A = "id_jogador10A";
+    private static final String ID_JOGADOR1B = "id_jogador1B";
+    private static final String ID_JOGADOR2B = "id_jogador2B";
+    private static final String ID_JOGADOR3B = "id_jogador3B";
+    private static final String ID_JOGADOR4B = "id_jogador4B";
+    private static final String ID_JOGADOR5B = "id_jogador5B";
+    private static final String ID_JOGADOR6B = "id_jogador6B";
+    private static final String ID_JOGADOR7B = "id_jogador7B";
+    private static final String ID_JOGADOR8B = "id_jogador8B";
+    private static final String ID_JOGADOR9B = "id_jogador9B";
+    private static final String ID_JOGADOR10B = "id_jogador10B";
     private static final String GOLOS_EQUIPA1 = "golos_equipaA";
     private static final String GOLOS_EQUIPA2 = "golos_equipaB";
-
-    //Tabela Equipa
-    private static final String ID_EQUIPA = "id_equipa";
-    private static final String ID_JOGADOR1 = "id_jogador1";
-    private static final String ID_JOGADOR2 = "id_jogador2";
-    private static final String ID_JOGADOR3 = "id_jogador3";
-    private static final String ID_JOGADOR4 = "id_jogador4";
-    private static final String ID_JOGADOR5 = "id_jogador5";
-    private static final String ID_JOGADOR6 = "id_jogador6";
-    private static final String ID_JOGADOR7 = "id_jogador7";
-    private static final String ID_JOGADOR8 = "id_jogador8";
-    private static final String ID_JOGADOR9 = "id_jogador9";
-    private static final String ID_JOGADOR10 = "id_jogador10";
 
     //Tabele Golos_jogo
     private static final String ID_GOLOS_JOGO = "id_golos_id";
@@ -80,42 +86,34 @@ public class LocalBaseDados extends SQLiteOpenHelper {
             DATA_NASCIMENTO_USER + " TEXT NOT NULL, " +
             NACIONALIDADE_USER + " TEXT NOT NULL " + " ) ; ";
 
-    private static final //onCreate tabela Equipa
-            String createEquipaTable = "CREATE TABLE " + TABLE_NAME_EQUIPA + " ( " +
-            ID_EQUIPA + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            ID_JOGADOR1 + " INTEGER NOT NULL, " +
-            ID_JOGADOR2 + " INTEGER NOT NULL, " +
-            ID_JOGADOR3 + " INTEGER NOT NULL, " +
-            ID_JOGADOR4 + " INTEGER NOT NULL, " +
-            ID_JOGADOR5 + " INTEGER NOT NULL, " +
-            ID_JOGADOR6 + " INTEGER NOT NULL, " +
-            ID_JOGADOR7 + " INTEGER NOT NULL, " +
-            ID_JOGADOR8 + " INTEGER NOT NULL, " +
-            ID_JOGADOR9 + " INTEGER NOT NULL, " +
-            ID_JOGADOR10 + " INTEGER NOT NULL, " +
-            " FOREIGN KEY (" + ID_JOGADOR1 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR2 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR3 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR4 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR5 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR6 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR7 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR8 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR9 +") references equipa(" + ID_USER +")," +
-            " FOREIGN KEY (" + ID_JOGADOR10 +") references equipa(" + ID_USER +")" + ") ; ";
-
     private static final //onCreate tabela Jogo
             String createJogoTable = "CREATE TABLE " + TABLE_NAME_JOGO + " ( " +
-            ID_JOGO + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            ID_JOGO + " INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE, " +
+            ID_JOGADOR1A + " INTEGER NOT NULL, " +
+            ID_JOGADOR2A + " INTEGER NOT NULL, " +
+            ID_JOGADOR3A + " INTEGER NOT NULL, " +
+            ID_JOGADOR4A + " INTEGER NOT NULL, " +
+            ID_JOGADOR5A + " INTEGER NOT NULL, " +
+            ID_JOGADOR6A + " INTEGER, " +
+            ID_JOGADOR7A + " INTEGER, " +
+            ID_JOGADOR8A + " INTEGER, " +
+            ID_JOGADOR9A + " INTEGER, " +
+            ID_JOGADOR10A + " INTEGER, " +
+            ID_JOGADOR1B + " INTEGER NOT NULL, " +
+            ID_JOGADOR2B + " INTEGER NOT NULL, " +
+            ID_JOGADOR3B + " INTEGER NOT NULL, " +
+            ID_JOGADOR4B + " INTEGER NOT NULL, " +
+            ID_JOGADOR5B + " INTEGER NOT NULL, " +
+            ID_JOGADOR6B + " INTEGER, " +
+            ID_JOGADOR7B + " INTEGER, " +
+            ID_JOGADOR8B + " INTEGER, " +
+            ID_JOGADOR9B + " INTEGER, " +
+            ID_JOGADOR10B + " INTEGER, " +
             DATA_JOGO + " TEXT NOT NULL, " +
             HORA_JOGO + " TEXT NOT NULL, " +
             LOCAL_JOGO + " TEXT NOT NULL, " +
-            EQUIPA_ID1 + " INTEGER, " +
-            EQUIPA_ID2 + " INTEGER, " +
-            GOLOS_EQUIPA1 + " INTEGER, " +
-            GOLOS_EQUIPA2 + " INTEGER, " +
-            " FOREIGN KEY (" + EQUIPA_ID1 +") references equipa(" + ID_EQUIPA +")," +
-            " FOREIGN KEY (" + EQUIPA_ID2 +") references equipa(" + ID_EQUIPA +")" + ") ; ";
+            GOLOS_EQUIPA1 + " INTEGER NOT NULL, " +
+            GOLOS_EQUIPA2 + " INTEGER NOT NULL " + " ) ; ";
 
     private static final //onCreate tabela Golos_marcados
             String createGolos_marcadosTable = "CREATE TABLE " + TABLE_NAME_GOLOS_JOGO + " ( " +
@@ -129,7 +127,6 @@ public class LocalBaseDados extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(createUserTable);
-        db.execSQL(createEquipaTable);
         db.execSQL(createJogoTable);
         db.execSQL(createGolos_marcadosTable);
     }
@@ -139,7 +136,6 @@ public class LocalBaseDados extends SQLiteOpenHelper {
         this.database = this.getWritableDatabase();
 
         Log.d("table", createUserTable);
-        Log.d("table", createEquipaTable);
         Log.d("table", createJogoTable);
         Log.d("table", createGolos_marcadosTable);
     }
@@ -173,96 +169,56 @@ public class LocalBaseDados extends SQLiteOpenHelper {
         return false;
     }
 
-    //implementar metodos CRUD
-
-    //Create - adicionar
-    public void adicionarJogoBD(Jogo jogo){
-        ContentValues values = new ContentValues();
-
-        values.put(ID_JOGO, jogo.getId());
-        values.put(LOCAL_JOGO, jogo.getLocal());
-        values.put(DATA_JOGO, jogo.getData());
-        values.put(HORA_JOGO, jogo.getHora());
-
-        //this.database.insert(TABLE_NAME, null, values);
-        this.database.insert(TABLE_NAME_JOGO, null, values);
-        System.out.println("--> ADICIONAR JOGO BD ");
-
-    }
-
-    //read
-    public ArrayList<Jogo> getAllJogosBD(){
-        ArrayList<Jogo> jogos = new ArrayList<>();
-        //esta instrução é mais propensa a Sql Injecton
-        //Cursor cursor = this.database.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-
-        //por isso em alternativa podemos usar
-        Cursor cursor = this.database.query(TABLE_NAME_JOGO, new String[]{
-                        ID_JOGO, LOCAL_JOGO, DATA_JOGO,
-                        HORA_JOGO, EQUIPA_ID1, EQUIPA_ID2,
-                        GOLOS_EQUIPA1, GOLOS_EQUIPA2},
-                null, null, null, null, null);
-
-        if(cursor.moveToFirst()){
-            do{
-                Jogo auxJogo = new Jogo(
-                        cursor.getInt(0),
-                        cursor.getString(1),
-                        cursor.getString(2),
-                        cursor.getString(3));
-                jogos.add(auxJogo);
-
-            }while(cursor.moveToNext());
+    public List<User> findAll() {
+        List<User> usersLDB = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME_USER, null);
+            if (cursor.moveToFirst()) {
+                usersLDB = new ArrayList<User>();
+                do {
+                    User user = new User();
+                    user.setId(cursor.getInt(0));
+                    user.setUsername(cursor.getString(1));
+                    user.setNome(cursor.getString(2));
+                    user.setPasswordHash(cursor.getString(3));
+                    user.setAuth_key(cursor.getString(4));
+                    user.setEmail(cursor.getString(5));
+                    user.setDataNascimento(cursor.getString(6));
+                    user.setNacionalidade(cursor.getString(7));
+                    usersLDB.add(user);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            usersLDB = null;
         }
-        return jogos;
+        return usersLDB;
     }
 
-    //update
-    public boolean guardarJogoBD(Jogo jogo){
-        ContentValues values = new ContentValues();
-
-        values.put(ID_JOGO, jogo.getId());
-        values.put(LOCAL_JOGO, jogo.getLocal());
-        values.put(DATA_JOGO, jogo.getData());
-        values.put(HORA_JOGO, jogo.getHora());
-
-        return this.database.update(
-                TABLE_NAME_JOGO, values, "id = ?", new String[]{"" + jogo.getId()}
-        ) > 0;
-
-    }
-
-    //delete
-    public boolean removerJogoBD(long idJogo){
-        return (this.database.delete(TABLE_NAME_JOGO, "id = ?", new String[]{"" + idJogo}) == 1);
-    }
-
-    public void removerAllJogosBD() {
-        this.database.delete(TABLE_NAME_JOGO, null, null);
-    }
-
-
-    /*public void adicionarJogo(Jogo jogo){
-        ContentValues values = new ContentValues();
-
-        values.put(ID_JOGO, jogo.getId());
-        values.put(DATA_JOGO, jogo.getData());
-        values.put(HORA_JOGO, jogo.getHora());
-        values.put(LOCAL_JOGO, jogo.getLocal());
-        values.put(ID_EQUIPA, jogo.getId_equipa());
-        values.put(GOLOS_EQUIPA, jogo.getGolosEquipa());
-
-        this.database.insert(TABLE_NAME, null, values);
-    }
-
-    public LinkedList<Jogo> getAllJogos(){
-        LinkedList<Jogo> jogos = new LinkedList<>();
-        Cursor cursor = this.database.rawQuery("SELECT * FROM " + TABLE_NAME, null);
-
-        if(cursor.moveToFirst()){
-
+    public List<User> search(String username) {
+        List<User> usersLDB = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME_USER + " where " + USERNAME_USER + " like ?", new String[] { "%" + username + "%" });
+            if (cursor.moveToFirst()) {
+                usersLDB = new ArrayList<User>();
+                do {
+                    User user = new User();
+                    user.setId(cursor.getInt(0));
+                    user.setUsername(cursor.getString(1));
+                    user.setNome(cursor.getString(2));
+                    user.setPasswordHash(cursor.getString(3));
+                    user.setAuth_key(cursor.getString(4));
+                    user.setEmail(cursor.getString(5));
+                    user.setDataNascimento(cursor.getString(6));
+                    user.setNacionalidade(cursor.getString(7));
+                    usersLDB.add(user);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            usersLDB = null;
         }
-        return jogos;
-    }*/
+        return usersLDB;
+    }
 
 }

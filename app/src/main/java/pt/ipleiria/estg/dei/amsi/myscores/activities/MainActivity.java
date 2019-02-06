@@ -1,6 +1,8 @@
 package pt.ipleiria.estg.dei.amsi.myscores.activities;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -44,16 +47,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SingletonUsers.getInstance(this).getAllUsersAPI(this);
+
         user = SingletonUsers.getInstance(this).getUser();
 
         fragmentoReplace = getSupportFragmentManager().beginTransaction();
 
         LinearLayout navHearder = findViewById(R.id.navigation_header_container);
-
-        //FrameLayout frameContent = findViewById(R.id.frameContent);
-        //FragmentManager fm = getSupportFragmentManager().findFragmentById()
-        //frameContent = getSupportFragmentManager().findFragmentByTag(“MY_TAG”);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,6 +74,10 @@ public class MainActivity extends AppCompatActivity
         tvNome.setText(user.get(0).getNome());
         tvEmail = headerView.findViewById(R.id.textViewEmail);
         tvEmail.setText(user.get(0).getEmail());
+
+        SharedPreferences.Editor sharedPreferences = getApplicationContext().getSharedPreferences("userShared",Context.MODE_PRIVATE).edit();
+        sharedPreferences.putInt("countryid", user.get(0).getId());
+        Log.d("testeShared", sharedPreferences.toString());
 
     }
 

@@ -14,7 +14,6 @@ import java.util.List;
 
 import pt.ipleiria.estg.dei.amsi.myscores.classes.Jogador;
 import pt.ipleiria.estg.dei.amsi.myscores.R;
-import pt.ipleiria.estg.dei.amsi.myscores.adapters.RecyclerViewEquipaBAdapter;
 
 
 /**
@@ -33,28 +32,7 @@ public class fragmentCriarEquipaB extends Fragment {
         // Inflate the layout for this fragment
         ViewGroup view = (ViewGroup) inflater.inflate(R.layout.fragment_criar_equipa_b, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerViewEquipaB);
-        recyclerView.setHasFixedSize(true);
-
-        initializeData();
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        RecyclerViewEquipaBAdapter adapter = new RecyclerViewEquipaBAdapter(jogadores);
-        recyclerView.setAdapter(adapter);
-
         return view;
-    }
-
-    private List<Jogador> jogadores = new ArrayList<>();
-
-    private void initializeData(){
-        jogadores.add(new Jogador("Carlos Franco", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("Afonso Maximino", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("Afonso Pinheiro", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("Gonçalo Amaro", R.drawable.ic_launcher));
-        jogadores.add(new Jogador("Francisco Melicias", R.drawable.ic_launcher));
     }
 
 }
