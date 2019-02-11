@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/tiLJogador1A"
+            android:id="@+id/tiLNomeEquipaA"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -40,6 +40,25 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEquipaA">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tilNomeEquipaA"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Nome da Equipa" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tiLJogador1A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tiLNomeEquipaA">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/tilJogador1A"
@@ -218,6 +237,17 @@
                 android:layout_height="match_parent"
                 android:hint="Jogador 10:" />
         </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btGuardarEquipaA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Guardar Equipa A"
+            app:layout_constraintTop_toBottomOf="@+id/tiLJogador10A"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.533"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 

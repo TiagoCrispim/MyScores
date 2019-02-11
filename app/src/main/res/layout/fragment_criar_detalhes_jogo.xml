@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/tiLayoutData"
+            android:id="@+id/tilLayoutData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -38,14 +38,14 @@
             app:layout_constraintTop_toBottomOf="@+id/textDados">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/tilData"
+                android:id="@+id/tiLayoutData"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="Data:" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/tiLayoutHora"
+            android:id="@+id/tilLayoutHora"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -53,17 +53,17 @@
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tiLayoutData">
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutData">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/tilHora"
+                android:id="@+id/tiLayoutHora"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Hora:"/>
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/tiLayoutLocal"
+            android:id="@+id/tilLayoutLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -71,17 +71,17 @@
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tiLayoutHora">
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutHora">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/tilLocal"
+                android:id="@+id/tiLayoutLocal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Local:" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilLayoutGolosA"
+            android:id="@+id/tilLayoutGolosJ1A"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -89,16 +89,17 @@
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tiLayoutLocal">
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutLocal">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ1A"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Golos Equipa A:" />
+                android:hint="Golos Jogador 1 (A):" />
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/tilLayoutGolosB"
+            android:id="@+id/tilLayoutGolosJ2A"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -106,12 +107,157 @@
             android:layout_marginEnd="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosA">
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ1A">
 
             <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ2A"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Golos Equipa B:" />
+                android:hint="Golos Jogador 2 (A):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ3A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ2A">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ3A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 3 (A):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ4A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ3A">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ4A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 4(A):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ5A"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ4A">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ5A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 5 (A):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ1B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ5A">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ1B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 1 (B):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ2B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ1B">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ2B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 2 (B):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ3B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ2B">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ3B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 3 (B):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ4B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ3B">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ4B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 4 (B):" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/tilLayoutGolosJ5B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ4B">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/tiLayoutGolosJ5B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Golos Jogador 5 (B):" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -120,7 +266,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Guardar Jogo"
-            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosB"
+            app:layout_constraintTop_toBottomOf="@+id/tilLayoutGolosJ5B"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.533"
             app:layout_constraintStart_toStartOf="parent" />

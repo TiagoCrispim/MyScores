@@ -100,8 +100,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mUsernameView = (AutoCompleteTextView) findViewById(R.id.username);
         populateAutoComplete();
 
-        /*SingletonJogos.getInstance(this).getAllJogosAPI(this);*/
-
+        SingletonJogos.getInstance(this).getAllJogosAPI(this);
 
         mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
