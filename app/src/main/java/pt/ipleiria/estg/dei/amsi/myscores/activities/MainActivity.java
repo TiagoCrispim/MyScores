@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SingletonUsers.getInstance(this).getAllUsersAPI(this);
+        /*SingletonUsers.getInstance(this).getAllUsersAPI(this);*/
 
         user = SingletonUsers.getInstance(this).getUser();
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity
         tvEmail.setText(user.get(0).getEmail());
 
         SharedPreferences.Editor sharedPreferences = getApplicationContext().getSharedPreferences("userShared",Context.MODE_PRIVATE).edit();
-        sharedPreferences.putInt("countryid", user.get(0).getId());
+        sharedPreferences.putInt("userid", user.get(0).getId());
         Log.d("testeShared", sharedPreferences.toString());
 
     }

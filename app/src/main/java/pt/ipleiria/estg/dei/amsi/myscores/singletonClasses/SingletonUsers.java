@@ -32,9 +32,9 @@ public class SingletonUsers extends Application {
     private LocalBaseDados localBD = null;
 
 
-    private String urlAPIUsers = "http://64789348.ngrok.io/MyScoresWebsite/api/web/v1/users";
-    private String urlAPIUsersLogin = "http://64789348.ngrok.io/MyScoresWebsite/api/web/v1/users/login";
-    private String urlAPIUsersRegisto = "http://64789348.ngrok.io/MyScoresWebsite/api/web/v1/users/registo";
+    private String urlAPIUsers = "http://6f453dab.ngrok.io/MyScoresWebsite/api/web/v1/users";
+    private String urlAPIUsersLogin = "http://6f453dab.ngrok.io/MyScoresWebsite/api/web/v1/users/login";
+    private String urlAPIUsersRegisto = "http://6f453dab.ngrok.io/MyScoresWebsite/api/web/v1/users/registo";
 
     private ArrayList<User> users;
     private String dadosLogin;
